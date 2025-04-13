@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+
+body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1 {
+    font-weight: 700; /* Bold */
+  }
+  
+  h2 {
+    font-weight: 600; /* SemiBold */
+  }
+  h3 {
+    font-weight: 500; /* Medium */
+  }
+  
+  p {
+    font-weight: 400; /* Regular */
+  }
+  
