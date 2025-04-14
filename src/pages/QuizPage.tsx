@@ -86,7 +86,7 @@ const QuizPage: React.FC = () => {
         {/* Header */}
         <div className="flex justify-between items-center text-gray-600 text-sm font-medium">
           <span>0:{timer < 10 ? `0${timer}` : timer}</span>
-          <button className="px-3 py-1 border rounded hover:bg-gray-100 transition text-sm">Quit</button>
+          <button onClick={() => navigate('/intro')} className="px-3 py-1 border rounded hover:bg-gray-100 transition text-sm">Quit</button>
         </div>
 
         {/* Segmented Timer Bar */}

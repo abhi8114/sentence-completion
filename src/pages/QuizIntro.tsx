@@ -1,53 +1,50 @@
 import { useNavigate } from 'react-router-dom';
 import Vector from '../assets/Vector.svg';
-
+import coin from '../assets/coin.png';
 const QuizIntro = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-[620px] text-center">
-        <div className="mb-6">
-          <img 
-            src={Vector} 
-            alt="Logo" 
-            className="mx-auto h-10 md:h-12 w-auto" 
-          />
+        <div className="mb-4">
+          <img src={Vector} alt="Logo" className="mx-auto h-12 w-auto" />
         </div>
-        
-        <h2 className="text-3xl md:text-[40px] mt-6 md:mt-10 mb-3 font-semibold">
+        <h2 className="text-[32px] sm:text-[36px] md:text-[40px] mt-10 mb-2 font-semibold">
           Sentence Construction
         </h2>
-        
-        <p className="text-gray-600 text-base md:text-xl leading-normal md:leading-[28px] mb-6 max-w-[540px] mx-auto">
+        <p className="text-[#7C8181] text-[16px] sm:text-[18px] md:text-[20px] leading-[24px] sm:leading-[26px] md:leading-[28px] tracking-[-0.01em] mb-3">
           Select the correct words to complete the sentence by arranging the provided options in the right order.
         </p>
 
-        <div className="grid grid-cols-3 gap-4 text-sm text-gray-800 my-8 md:my-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 text-sm text-[#2A2D2D] mb-6 mt-10 sm:mt-[76px] gap-6 sm:gap-0">
           <div className="flex flex-col items-center">
-            <h3 className="font-medium text-lg md:text-xl mb-2 md:mb-4">Time Per Question</h3>
-            <p className="text-gray-500">30 sec</p>
+            <h3 className="font-medium text-lg sm:text-xl mb-2 sm:mb-4">Time Per Question</h3>
+            <h3 className="text-[#7C8181] text-base">30 sec</h3>
           </div>
-          <div className="flex flex-col items-center border-l border-r border-gray-200">
-            <h3 className="font-medium text-lg md:text-xl mb-2 md:mb-4">Total Questions</h3>
-            <p className="text-gray-500">10</p>
+          <div className="flex flex-col items-center sm:border-l sm:border-r border-[#DFE3E3]">
+            <h3 className="font-medium text-lg sm:text-xl mb-2 sm:mb-4">Total Questions</h3>
+            <h3 className="text-[#7C8181] text-base">10</h3>
           </div>
           <div className="flex flex-col items-center">
-            <h3 className="font-medium text-lg md:text-xl mb-2 md:mb-4">Coins</h3>
-            <p className="text-yellow-500 font-semibold">0</p>
+            <h3 className="font-medium text-lg sm:text-xl mb-2 sm:mb-4">Coins</h3>
+          <div className="flex items-center gap-2">
+            <img src={coin} alt="Coin" className="w-4 h-4 " />
+            <h3 className="text-[#7C8181] font-bold text-base">0</h3>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-10 md:mt-16">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 sm:mt-16">
           <button
             onClick={() => navigate('/')}
-            className="w-full sm:w-auto px-8 py-2 border rounded-md bg-white text-blue-600 hover:bg-blue-50 transition font-medium"
+            className="w-full sm:w-auto px-12 py-2 border rounded-md bg-white text-[#453FE1] hover:bg-blue-50 transition"
           >
             Back
           </button>
           <button
             onClick={() => navigate('/quiz')}
-            className="w-full sm:w-auto px-8 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition font-medium"
+            className="w-full sm:w-auto px-12 py-2 bg-[#453FE1] text-white rounded-md hover:bg-blue-700 transition"
           >
             Start
           </button>
