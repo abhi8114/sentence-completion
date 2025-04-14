@@ -24,7 +24,7 @@ The application presents users with incomplete sentences and four word options. 
 - Implements a 30-second countdown timer per question.
 - Automatically moves to the next question when time is up.
 - “Next” button is enabled only when all blanks are filled.
-- Fetches sentence data from a local JSON API using JSON Server.
+- Fetches sentence data from a  JSON API using JSON Server.
 - Manages quiz state and flow effectively with React hooks.
 - Displays a **result screen** at the end showing:
   - All attempted answers (correct/incorrect)
