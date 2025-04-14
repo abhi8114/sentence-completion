@@ -89,19 +89,18 @@ const QuizPage: React.FC = () => {
           <button onClick={() => navigate('/intro')} className="px-3 py-1 border rounded hover:bg-gray-100 transition text-sm">Quit</button>
         </div>
 
-        {/* Segmented Timer Bar */}
+        
+        {/* Pagination-style Progress Bar */}
         <div className="flex justify-center gap-1 md:gap-2 mt-4 overflow-x-auto">
-          {[...Array(10)].map((_, index) => (
+          {[...Array(questions.length)].map((_, index) => (
             <div
               key={index}
-              className={`h-2 w-8 md:w-20 rounded-[10.63px] transition-all duration-300 ${
-                index < Math.floor((30 - timer) / 3)
-                  ? 'bg-[#F2A531]'
-                  : 'bg-[#DFE3E3]'
-              }`}
+              className={`h-2 w-8 md:w-20 rounded-[10.63px] transition-all duration-300 ${index <= currentIndex ? 'bg-[#F2A531]' : 'bg-[#DFE3E3]'
+                }`}
             ></div>
           ))}
         </div>
+
 
         {/* Instructions */}
         <div className="text-center mt-8 md:mt-14">
@@ -138,11 +137,10 @@ const QuizPage: React.FC = () => {
               key={word}
               onClick={() => handleWordClick(word)}
               disabled={selectedWords.includes(word)}
-              className={`px-3 md:px-4 py-1 md:py-2 border-[#BFC6C6] border rounded-lg text-xs md:text-sm font-medium transition ${
-                selectedWords.includes(word)
+              className={`px-3 md:px-4 py-1 md:py-2 border-[#BFC6C6] border rounded-lg text-xs md:text-sm font-medium transition ${selectedWords.includes(word)
                   ? 'text-[#414343] cursor-not-allowed'
                   : 'hover:bg-gray-50'
-              }`}
+                }`}
             >
               {word}
             </button>
