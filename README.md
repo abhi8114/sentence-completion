@@ -8,7 +8,7 @@ This is a **Sentence Completion Web Application** built as part of the **CA MONK
 
 ## 🚀 Live Demo
 
-👉 https://sentence-completion-ore7.vercel.app/(#)  
+👉 https://sentence-completion-ore7.vercel.app/
 
 ---
 
