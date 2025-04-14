@@ -6,14 +6,9 @@ This is a **Sentence Completion Web Application** built as part of the **CA MONK
 
 **Frontend Intern**
 
-> For more information about the internship role, stipend, duration, etc., refer to the official [Job Description](#).
-
----
-
 ## 🚀 Live Demo
 
-👉 [Check out the live application here](#)  
-👉 [Original implementation reference](#)
+👉 https://sentence-completion-ore7.vercel.app/(#)  
 
 ---
 
