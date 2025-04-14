@@ -1,54 +1,68 @@
-# React + TypeScript + Vite
+# 🧠 Sentence Construction Tool
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **Sentence Completion Web Application** built as part of the **CA MONK Frontend Internship Assignment**. The app challenges users to construct grammatically correct sentences by choosing the right word order under a time limit.
 
-Currently, two official plugins are available:
+## 🔧 Role
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Frontend Intern**
 
-## Expanding the ESLint configuration
+> For more information about the internship role, stipend, duration, etc., refer to the official [Job Description](#).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Live Demo
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+👉 [Check out the live application here](#)  
+👉 [Original implementation reference](#)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📝 Task Overview
+
+The application presents users with incomplete sentences and four word options. Users must drag or click the correct words into the blanks before the timer ends.
+
+### ✅ Features Implemented
+
+- Displays incomplete sentences with blank spaces.
+- Offers 4 options per question to complete the sentence.
+- Allows unselecting a word by clicking on a filled blank.
+- Implements a 30-second countdown timer per question.
+- Automatically moves to the next question when time is up.
+- “Next” button is enabled only when all blanks are filled.
+- Fetches sentence data from a local JSON API using JSON Server.
+- Manages quiz state and flow effectively with React hooks.
+- Displays a **result screen** at the end showing:
+  - All attempted answers (correct/incorrect)
+  - The correct answers for mistakes
+  - Final score out of 10
+
+---
+
+## 💻 Tech Stack
+
+| Tech         | Usage                          |
+|--------------|--------------------------------|
+| **React.js** | Frontend framework             |
+| **TypeScript** | Type safety & better dev experience |
+| **Tailwind CSS** | Styling and layout         |
+| **Vite**     | Build tool for fast dev env    |
+| **React Router DOM** | Page navigation         |
+| **JSON Server** | Local API for mock data     |
+
+> ⚠️ Did **not** use `shadcn/ui` in this project.
+
+---
+
+## 📱 Responsive Design
+
+The app is fully responsive and optimized for mobile, tablet, and desktop devices using Tailwind's utility-first approach.
+
+---
+
+## 📦 How to Run Locally
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/your-username/sentence-construction-app.git
+cd sentence-construction-app
