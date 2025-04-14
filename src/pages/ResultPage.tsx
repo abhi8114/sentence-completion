@@ -1,9 +1,14 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import {
+  CircularProgressbar,
+  buildStyles,
+} from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 interface Question {
   questionId: string;
-  question: string; // sentence with blanks
+  question: string;
   correctAnswer: string[];
   options: string[];
 }
@@ -34,70 +39,78 @@ const ResultPage: React.FC = () => {
   }
 
   const { questions, userAnswers, score } = state;
+  const percentage = Math.round((score / questions.length) * 100);
 
-  // Utility to fill blanks with given words (correct/user)
-  const fillBlanks = (sentenceWithBlanks: string, words: string[]) => {
-    let filled = sentenceWithBlanks;
-    let i = 0;
-    filled = filled.replace(/_{3,}/g, () => {
-      const word = words[i] || '';
-      i++;
-      return word;
+  const fillBlanks = (sentence: string, words: string[]) => {
+    let index = 0;
+    return sentence.replace(/_{3,}/g, () => {
+      return words[index++] || '____';
     });
-    return filled;
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-6">
-      {/* Score Summary */}
-      <div className="text-center">
-        <div className="w-24 h-24 mx-auto rounded-full border-4 border-green-500 flex items-center justify-center text-2xl font-bold text-green-600">
-          {Math.round((score / questions.length) * 100)}
+    <div className="max-w-5xl mx-auto p-6 space-y-10">
+      {/* Circular Score Card */}
+      <div className="flex flex-col items-center text-center">
+        <div className="w-32 h-32 mb-4">
+          <CircularProgressbar
+            value={percentage}
+            text={`${percentage}`}
+            styles={buildStyles({
+              pathColor: percentage >= 50 ? '#22c55e' : '#ef4444',
+              textColor: percentage >= 50 ? '#22c55e' : '#ef4444',
+              trailColor: '#e5e7eb',
+              textSize: '28px',
+              pathTransitionDuration: 0.5,
+            })}
+          />
         </div>
-        <p className="text-lg font-semibold mt-2">Overall Score</p>
-        <p className="text-gray-600 mt-1">
-          You scored {score} out of {questions.length}.
+        <p className="text-xl font-semibold">Overall Score</p>
+        <p className="text-gray-600">
+          You got {score} out of {questions.length} correct.
         </p>
-        <p className="text-sm text-gray-500 mt-2">
-          Review your responses below to see where you can improve.
+        <p className="text-sm text-gray-500 mt-1">
+          Keep practicing to improve your performance.
         </p>
         <button
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          className="mt-20 px-5 py-2 bg-white text-[#453FE1] rounded border border-[#453FE1]"
           onClick={() => navigate('/')}
         >
           Go to Dashboard
         </button>
       </div>
 
-      {/* Results */}
-      <div className="space-y-4">
-        {questions.map((question, index) => {
+      {/* Question-wise Feedback */}
+      <div className="space-y-[120px]">
+        {questions.map((q, idx) => {
           const isCorrect =
-            JSON.stringify(userAnswers[index]) ===
-            JSON.stringify(question.correctAnswer);
-          const filledCorrectSentence = fillBlanks(question.question, question.correctAnswer);
-          const filledUserSentence = fillBlanks(question.question, userAnswers[index]);
+            JSON.stringify(userAnswers[idx]) ===
+            JSON.stringify(q.correctAnswer);
+
+          const correctSentence = fillBlanks(q.question, q.correctAnswer);
+          const userSentence = fillBlanks(q.question, userAnswers[idx]);
 
           return (
             <div
-              key={question.questionId}
-              className="border rounded-lg shadow-sm p-4 bg-white"
+              key={q.questionId}
+              className="bg-white rounded-lg shadow-md p-4 "
             >
-              <p className="text-gray-600 text-sm font-medium mb-1">Prompt</p>
-              <p className="text-gray-900">{filledCorrectSentence}</p>
+              <span className='bg-[#F0F0F0]'> <p className="text-sm text-[#616464] mb-1">Prompt</p></span>
+              
+              <p className="text-gray-900 font-medium">{correctSentence}</p>
 
-              <div className="mt-3 p-3 rounded-md bg-gray-50">
-                <p className="text-sm text-gray-500 font-medium mb-1">
-                  Your response{' '}
+              <div className="mt-3 bg-gray-50 rounded-md p-3">
+                <p className="text-sm font-medium text-gray-600 mb-1">
+                  Your response:{' '}
                   <span
-                    className={`ml-2 font-semibold ${
+                    className={`${
                       isCorrect ? 'text-green-600' : 'text-red-600'
-                    }`}
+                    } font-semibold ml-1`}
                   >
                     {isCorrect ? 'Correct' : 'Incorrect'}
                   </span>
                 </p>
-                <p className="text-gray-800">{filledUserSentence}</p>
+                <p className="text-gray-800">{userSentence}</p>
               </div>
             </div>
           );
